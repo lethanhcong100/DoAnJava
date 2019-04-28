@@ -57,7 +57,6 @@ public class LibraryCard {
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<RentReceipt> rentReceipts;
     
-<<<<<<< HEAD
     @OneToMany(mappedBy="card")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<LostHistory> lostHistory;
@@ -66,8 +65,6 @@ public class LibraryCard {
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<FinesReceipt> finesReceipts;
     
-=======
->>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
     public LibraryCard() {}
     
     public LibraryCard(String fullName, int type, Date dateOfBirth, 
@@ -170,7 +167,6 @@ public class LibraryCard {
     public void setRentReceipts(List<RentReceipt> rentReceipts) {
         this.rentReceipts = rentReceipts;
     }
-<<<<<<< HEAD
 
     public List<LostHistory> getLostHistory() {
         return lostHistory;
@@ -187,8 +183,6 @@ public class LibraryCard {
     public void setFinesReceipts(List<FinesReceipt> finesReceipts) {
         this.finesReceipts = finesReceipts;
     }
-=======
->>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
     
     @Override
     public String toString() {
@@ -197,17 +191,6 @@ public class LibraryCard {
                 + ", email=" + email + ", createDate=" + createDate + ", expireDate=" 
                 + expireDate + ", finesFee=" + finesFee + ", createdBy=" + createdBy
                 + ", rentReceipts=" + rentReceipts + "}";
-<<<<<<< HEAD
-=======
-    }
-    
-    public void addRentReceipt(RentReceipt rentReceipt){
-        if(this.rentReceipts == null){
-            this.rentReceipts = new ArrayList<>();
-        }
-        this.rentReceipts.add(rentReceipt);
-        rentReceipt.setCard(this);
->>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
     }
     
     public void addRentReceipt(RentReceipt rentReceipt){
