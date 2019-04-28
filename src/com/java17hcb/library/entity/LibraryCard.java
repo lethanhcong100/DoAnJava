@@ -1,6 +1,8 @@
 package com.java17hcb.library.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -49,6 +52,18 @@ public class LibraryCard {
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinColumn(name="CREATED_BY")
     private Staff createdBy;
+    
+    @OneToMany(mappedBy="card")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    private List<RentReceipt> rentReceipts;
+    
+    @OneToMany(mappedBy="card")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    private List<LostHistory> lostHistory;
+    
+    @OneToMany(mappedBy="payedBy")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    private List<FinesReceipt> finesReceipts;
     
     public LibraryCard() {}
     
@@ -145,11 +160,58 @@ public class LibraryCard {
         this.createdBy = createdBy;
     }
 
+    public List<RentReceipt> getRentReceipts() {
+        return rentReceipts;
+    }
+
+    public void setRentReceipts(List<RentReceipt> rentReceipts) {
+        this.rentReceipts = rentReceipts;
+    }
+
+    public List<LostHistory> getLostHistory() {
+        return lostHistory;
+    }
+
+    public void setLostHistory(List<LostHistory> lostHistory) {
+        this.lostHistory = lostHistory;
+    }
+
+    public List<FinesReceipt> getFinesReceipts() {
+        return finesReceipts;
+    }
+
+    public void setFinesReceipts(List<FinesReceipt> finesReceipts) {
+        this.finesReceipts = finesReceipts;
+    }
+    
     @Override
     public String toString() {
         return "LibraryCard{" + "id=" + id + ", fullName=" + fullName + ", type=" 
                 + type + ", dateOfBirth=" + dateOfBirth + ", address=" + address 
                 + ", email=" + email + ", createDate=" + createDate + ", expireDate=" 
-                + expireDate + ", finesFee=" + finesFee + ", createdBy=" + createdBy + '}';
+                + expireDate + ", finesFee=" + finesFee + ", createdBy=" + createdBy
+                + ", rentReceipts=" + rentReceipts + "}";
+    }
+    
+    public void addRentReceipt(RentReceipt rentReceipt){
+        if(this.rentReceipts == null){
+            this.rentReceipts = new ArrayList<>();
+        }
+        this.rentReceipts.add(rentReceipt);
+        rentReceipt.setCard(this);
+    }
+    
+    public void addLostRecord(LostHistory record){
+        if(this.lostHistory == null){
+            this.lostHistory = new ArrayList<>();
+        }
+        this.lostHistory.add(record);
+    }
+     
+    public void addFinesReceipt(FinesReceipt receipt){
+        if(this.finesReceipts == null) {
+            this.finesReceipts = new ArrayList<>();
+        }
+        this.finesReceipts.add(receipt);
     }
 }
