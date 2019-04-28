@@ -18,23 +18,23 @@ public class LostHistory {
     @ManyToOne
     @JoinColumn(name="BOOK_ID")
     private Book book;
-
+    
     @ManyToOne
     @JoinColumn(name="LIBRARY_CARD_ID")
     private LibraryCard card;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;    
-
+    
     @ManyToOne
     @JoinColumn(name="RECORD_BY")
     private Staff recordedBy;
-
+    
     @Column(name="LOST_DATE")
     private Date lostDate;
-
+    
     @Column(name="FINES_FEE")
     private long finesFee;
 
@@ -48,10 +48,11 @@ public class LostHistory {
         this.lostDate = lostDate;
         this.finesFee = finesFee;
     }
-
+    
     /*public LostHistoryPK getLostHistoryPK() {
         return lostHistoryPK;
     }
+
     public void setLostHistoryPK(LostHistoryPK lostHistoryPK) {
         this.lostHistoryPK = lostHistoryPK;
     }*/

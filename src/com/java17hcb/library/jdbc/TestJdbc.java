@@ -34,6 +34,8 @@ public class TestJdbc {
             
             Session session = factory.getCurrentSession();
             
+            int test = Staff.Diploma.CAODANG;
+            
             try{
                 session.beginTransaction();
                 
@@ -58,6 +60,7 @@ public class TestJdbc {
                 bookImportRecord.setCopy(5);
                 
                 staff.importBook(bookImportRecord);
+
                 
                 
                 /*Staff staff = session.get(Staff.class, 1);
@@ -111,10 +114,12 @@ public class TestJdbc {
                 
                 
                 
-                Staff staff = session.get(Staff.class, 1);
+                /*Staff staff = session.get(Staff.class, 1);
                 LibraryCard card = session.get(LibraryCard.class, 2);
                 FinesReceipt finesReceipt = new FinesReceipt(staff, card, card.getFinesFee(), 50000);
-                session.save(finesReceipt);
+                session.save(finesReceipt);*/
+                
+                Staff staff = session.get(Staff.class, 1);
                 
                 session.getTransaction().commit();
             } catch (Exception e){

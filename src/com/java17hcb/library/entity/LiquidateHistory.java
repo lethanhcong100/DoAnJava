@@ -18,22 +18,22 @@ public class LiquidateHistory {
     @ManyToOne
     @JoinColumn(name="BOOK_ID")
     private Book book;
-
+    
     @ManyToOne
     @JoinColumn(name="LIQUIDATE_BY")
     private Staff liquidateBy;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
-
+    
     @Column(name="LIQUIDATE_DATE")
     private Date liquidateTime;
-
+    
     @Column(name="REASON")
     private String reason;
-
+    
     @Column(name="COPY")
     private int copy;
 
