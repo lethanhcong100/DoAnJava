@@ -52,9 +52,12 @@ public class Book {
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<BookRentReceipt> bookRentReceipts;
     
+<<<<<<< HEAD
     @OneToMany(mappedBy = "book")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<LostHistory> lostHistory;
+=======
+>>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
     public Book() {}
     
     @OneToMany(mappedBy = "book")
@@ -152,6 +155,7 @@ public class Book {
         this.bookRentReceipts = bookRentReceipts;
     }
 
+<<<<<<< HEAD
     public List<LostHistory> getLostHistory() {
         return lostHistory;
     }
@@ -168,6 +172,8 @@ public class Book {
         this.liquidateHistory = liquidateHistory;
     }
     
+=======
+>>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
     @Override
     public String toString() {
         return "Book{" + "id=" + id + ", name=" + name + ", type=" + type + ", author=" 

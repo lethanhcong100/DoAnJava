@@ -3,10 +3,14 @@ package com.java17hcb.library.jdbc;
 import com.java17hcb.library.entity.Book;
 import com.java17hcb.library.entity.BookImport;
 import com.java17hcb.library.entity.BookRentReceipt;
+<<<<<<< HEAD
 import com.java17hcb.library.entity.FinesReceipt;
 import com.java17hcb.library.entity.LibraryCard;
 import com.java17hcb.library.entity.LiquidateHistory;
 import com.java17hcb.library.entity.LostHistory;
+=======
+import com.java17hcb.library.entity.LibraryCard;
+>>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
 import com.java17hcb.library.entity.RentReceipt;
 import com.java17hcb.library.entity.ReturnReceipt;
 import com.java17hcb.library.entity.Staff;
@@ -27,9 +31,12 @@ public class TestJdbc {
                                     .addAnnotatedClass(RentReceipt.class)
                                     .addAnnotatedClass(BookRentReceipt.class)
                                     .addAnnotatedClass(ReturnReceipt.class)
+<<<<<<< HEAD
                                     .addAnnotatedClass(LostHistory.class)
                                     .addAnnotatedClass(LiquidateHistory.class)
                                     .addAnnotatedClass(FinesReceipt.class)
+=======
+>>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
                                     .buildSessionFactory();
             
             Session session = factory.getCurrentSession();
@@ -58,6 +65,10 @@ public class TestJdbc {
                 bookImportRecord.setCopy(5);
                 
                 staff.importBook(bookImportRecord);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
                 
                 
                 /*Staff staff = session.get(Staff.class, 1);
@@ -94,6 +105,7 @@ public class TestJdbc {
                 returnReceipt.setLostFee(0);
                 session.save(returnReceipt);*/
                 
+<<<<<<< HEAD
                 
                 
                 /*Book book = session.get(Book.class, 32);
@@ -116,6 +128,8 @@ public class TestJdbc {
                 FinesReceipt finesReceipt = new FinesReceipt(staff, card, card.getFinesFee(), 50000);
                 session.save(finesReceipt);
                 
+=======
+>>>>>>> 840a82641a42aac0d5e1e7881e652a8ba7b4b666
                 session.getTransaction().commit();
             } catch (Exception e){
                 e.printStackTrace();
