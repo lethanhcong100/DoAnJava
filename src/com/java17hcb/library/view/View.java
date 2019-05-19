@@ -17,15 +17,15 @@ public class View {
     public static void main(String... args) throws ParseException{
         String username = "1742038";
         String password = "123";
-        
+
         Staff staff = BusStaff.getInstance().login(username, password);
         if(staff != null){
             CurrentStaff.setCurrentStaff(staff);
-            
-            /*String dateInString = "22/12/1990"; 
+
+            /*String dateInString = "22/12/1990";
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date dateOfBirth = formatter.parse(dateInString);
-            
+
             String newUsername = "1742038";
             String newPassword = "123";
             String fullName = "Minh Trí";
@@ -34,52 +34,62 @@ public class View {
             int division = Staff.Division.THU_KHO;
             String address = "17 Nguyễn Văn Cừ";
             String phone = "1274263";
-            
-            String message = BusStaff.getInstance().createStaff(newUsername, newPassword, fullName, 
-                                            dateOfBirth, diploma, position, division, 
+
+            String message = BusStaff.getInstance().createStaff(newUsername, newPassword, fullName,
+                                            dateOfBirth, diploma, position, division,
                                             address, phone);
             System.out.println(message);*/
-            
-            
-            
+
+
+
             /*String fullName = "Tuấn Anh";
             int type = LibraryCard.Type.X;
             String address = "12 Nguyễn Văn Cừ";
             String email = "example@gmail.com";
             Date createDate = new Date();
-            
+
             String dateInString = "15/8/1980";
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date dateOfBirth = formatter.parse(dateInString);
-            
+
             System.out.println(BusLibraryCard.getInstance().createLibraryCard(fullName, type, dateOfBirth, address, email, createDate));
-            
-            
-            
-            String name = "C++ Primer";
+
+
+
+            String title = "C++ Primer";
             String author = "Stanley B. Lippman, Josée Lajoie, Barbara E. Moo";
             int type = Book.Type.B;
-            
+
             String publishYearString = "12/9/2015";
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date publishYear = formatter.parse(publishYearString);
-            
+
             String publisher = "Pearson";
             long price = 300000;
             int copies = 5;
-            
-            System.out.println(BusBook.getInstance().importBook(name, type, author, publishYear, publisher, price, copies));*/
-            
-            
+
+            System.out.println(BusBook.getInstance().importBook(title, type, author, publishYear, publisher, price, copies));*/
+
+
             /*List<Integer> bookIds = new ArrayList<>();
-            bookIds.add(31);
-            bookIds.add(34);           
+            bookIds.add(32);
+            bookIds.add(35);
             System.out.println(BusLibraryCard.getInstance().rentBooks(2, bookIds));*/
-            
-            
-            
-            
-            System.out.println(BusLibraryCard.getInstance().checkRentStatus(2));
+
+
+
+            //System.out.println(BusLibraryCard.getInstance().checkRentStatus(2));
+
+
+
+            List<Integer> returnBookIds = new ArrayList<>();
+            returnBookIds.add(31);
+            returnBookIds.add(34);
+
+            List<Integer> lostBookIds = new ArrayList<>();
+            lostBookIds.add(32);
+
+            System.out.println(BusLibraryCard.getInstance().returnBook(2, returnBookIds, lostBookIds));
         }
     }
 }

@@ -18,21 +18,21 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 @Table(name="book")
 public class Book {
-    
+
     public static class Type{
         public static final int A = 0;
         public static final int B = 1;
         public static final int C = 2;
     }
-    
-    
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
-    @Column(name = "NAME")
-    private String name;
+    @Column(name = "TITLE")
+    private String title;
 
     @Column(name = "TYPE")
     private int type;
@@ -55,23 +55,23 @@ public class Book {
     @OneToMany(mappedBy = "importedBook")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<BookImport> bookImportRecords;
-    
+
     @OneToMany(mappedBy = "book")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<BookRentReceipt> bookRentReceipts;
-    
+
     @OneToMany(mappedBy = "book")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<LostHistory> lostHistory;
     public Book() {}
-    
+
     @OneToMany(mappedBy = "book")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<LiquidateHistory> liquidateHistory;
-    
-    public Book(String name, int type, String author, Date publishYear,
+
+    public Book(String title, int type, String author, Date publishYear,
             String publisher, long price, int remainCopy) {
-        this.name = name;
+        this.title = title;
         this.type = type;
         this.author = author;
         this.publishYear = publishYear;
@@ -88,12 +88,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public int getType() {
@@ -175,29 +175,29 @@ public class Book {
     public void setLiquidateHistory(List<LiquidateHistory> liquidateHistory) {
         this.liquidateHistory = liquidateHistory;
     }
-    
+
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", name=" + name + ", type=" + type + ", author=" 
-                + author + ", publishYear=" + publishYear + ", publisher=" + publisher 
-                + ", price=" + price + ", remainCopy=" + remainCopy + ", bookImportRecords=" 
+        return "Book{" + "id=" + id + ", title=" + title + ", type=" + type + ", author="
+                + author + ", publishYear=" + publishYear + ", publisher=" + publisher
+                + ", price=" + price + ", remainCopy=" + remainCopy + ", bookImportRecords="
                 + bookImportRecords + '}';
     }
-    
+
     public void importBook (BookImport record){
         if(this.bookImportRecords == null){
             this.bookImportRecords = new ArrayList<>();
         }
         this.bookImportRecords.add(record);
     }
-    
+
     public void addLostRecord(LostHistory record){
         if(this.lostHistory == null) {
             this.lostHistory = new ArrayList<>();
         }
         this.lostHistory.add(record);
     }
-    
+
     public void addLiquidateRecord(LiquidateHistory record){
         if(this.liquidateHistory == null) {
             this.liquidateHistory = new ArrayList<>();

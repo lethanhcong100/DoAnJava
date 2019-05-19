@@ -17,27 +17,27 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="rent_receipt")
-public class RentReceipt {    
+public class RentReceipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private int id;
-    
+
     @ManyToOne
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinColumn(name="LIBRARY_CARD_ID")
     private LibraryCard card;
-    
+
     @Column(name="RENT_DATE")
     private Date rentDate;
-    
+
     @OneToMany(mappedBy = "rentReceipt")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<BookRentReceipt> bookRentReceipts;
-    
-    @OneToMany(mappedBy = "rentReceipt")
-    @Cascade({CascadeType.SAVE_UPDATE})
-    private List<ReturnReceipt> returnReceipts;
+
+//    @OneToMany(mappedBy = "rentReceipt")
+//    @Cascade({CascadeType.SAVE_UPDATE})
+//    private List<ReturnReceipt> returnReceipts;
 
     public RentReceipt() {}
 
@@ -45,7 +45,7 @@ public class RentReceipt {
         this.card = card;
         this.rentDate = rentDate;
     }
-    
+
     public LibraryCard getCard() {
         return card;
     }
@@ -78,20 +78,20 @@ public class RentReceipt {
         this.id = id;
     }
 
-    public List<ReturnReceipt> getReturnReceipts() {
-        return returnReceipts;
-    }
+//    public List<ReturnReceipt> getReturnReceipts() {
+//        return returnReceipts;
+//    }
+//
+//    public void setReturnReceipts(List<ReturnReceipt> returnReceipts) {
+//        this.returnReceipts = returnReceipts;
+//    }
 
-    public void setReturnReceipts(List<ReturnReceipt> returnReceipts) {
-        this.returnReceipts = returnReceipts;
-    }
-    
     @Override
     public String toString() {
-        return "RentReceipt{" + "id=" + id + ", card=" + card + ", rentDate=" 
+        return "RentReceipt{" + "id=" + id + ", card=" + card + ", rentDate="
                 + rentDate + '}';
     }
-    
+
     public void addBookToReceipt (BookRentReceipt record){
         if(this.bookRentReceipts == null){
             this.bookRentReceipts = new ArrayList();
