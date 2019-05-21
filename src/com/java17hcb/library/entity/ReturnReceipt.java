@@ -24,16 +24,16 @@ public class ReturnReceipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private int id;
-
+    
     @Column(name="RETURN_DATE")
     private Date returnDate = new Date();
-
+    
     @Column(name="LATE_FEE")
     private long lateFee;
-
+    
     @Column(name="LOST_FEE")
     private long lostFee;
-
+    
 //    @ManyToOne
 //    @JoinColumn(name="RENT_RECEIPT_ID")
 //    private RentReceipt rentReceipt;
@@ -41,7 +41,7 @@ public class ReturnReceipt {
     @OneToMany(mappedBy="returnReceipt")
     @Cascade({CascadeType.SAVE_UPDATE})
     private List<BookRentReceipt> bookRentReceipts;
-
+    
     public ReturnReceipt() {}
 
 //    public ReturnReceipt(RentReceipt rentReceipt) {
@@ -96,13 +96,13 @@ public class ReturnReceipt {
     public void setBookRentReceipts(List<BookRentReceipt> bookRentReceipts) {
         this.bookRentReceipts = bookRentReceipts;
     }
-
+    
     @Override
     public String toString() {
-        return "ReturnReceipt{" + "id=" + id + ", returnDate=" + returnDate + ", lateFee="
+        return "ReturnReceipt{" + "id=" + id + ", returnDate=" + returnDate + ", lateFee=" 
                 + lateFee + ", lostFee=" + lostFee + /*", rentReceipt=" + rentReceipt*/ + '}';
     }
-
+    
     public void addBookToReceipt(BookRentReceipt record){
         if(this.bookRentReceipts == null){
             this.bookRentReceipts = new ArrayList();
