@@ -10,7 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema library_manager
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `library_manager` ;
 
 -- -----------------------------------------------------
 -- Schema library_manager
@@ -35,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`book` (
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `NAME_UNIQUE` (`TITLE` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 43
+AUTO_INCREMENT = 48
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -58,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`staff` (
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `USERNAME_UNIQUE` (`USERNAME` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -83,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`book_import` (
     FOREIGN KEY (`IMPORT_BY`)
     REFERENCES `library_manager`.`staff` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 20
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -109,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`library_card` (
     FOREIGN KEY (`CREATED_BY`)
     REFERENCES `library_manager`.`staff` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -128,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`rent_receipt` (
     FOREIGN KEY (`LIBRARY_CARD_ID`)
     REFERENCES `library_manager`.`library_card` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 37
+AUTO_INCREMENT = 40
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -143,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`return_receipt` (
   `LATE_FEE` DECIMAL(10,0) UNSIGNED ZEROFILL NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 30
+AUTO_INCREMENT = 31
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -196,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`fines_receipt` (
     FOREIGN KEY (`TAKED_BY`)
     REFERENCES `library_manager`.`staff` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -223,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`liquidate_history` (
     FOREIGN KEY (`LIQUIDATE_BY`)
     REFERENCES `library_manager`.`staff` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -254,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `library_manager`.`lost_history` (
     FOREIGN KEY (`RECORD_BY`)
     REFERENCES `library_manager`.`staff` (`ID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 15
+AUTO_INCREMENT = 18
 DEFAULT CHARACTER SET = utf8;
 
 
